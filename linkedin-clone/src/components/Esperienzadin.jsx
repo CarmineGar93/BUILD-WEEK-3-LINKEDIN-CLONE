@@ -13,11 +13,12 @@ function Esperienzadin() {
     const [isModifing, setisModifing] = useState(false)
     const [elementToModify, setElementToModify] = useState('')
     const token = useSelector(state => state.token.token)
+    const user = useSelector((state) => state.user.user_logged);
     const dispatch = useDispatch()
     useEffect(() => {
         if (!show) {
             setisModifing(false)
-            dispatch(RetrieveExperiencesAction(token))
+            dispatch(RetrieveExperiencesAction(token, user._id))
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
