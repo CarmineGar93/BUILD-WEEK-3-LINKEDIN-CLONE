@@ -60,7 +60,7 @@ function Navbardin() {
                 to="/home"
                 className={`nav-link d-flex flex-column align-items-center py-0 ${location === '/home' ? 'border-bottom border-2 border-black' : ''}`}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={location === '/home' ? 'black' : '#666666'} class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={location === '/home' ? 'black' : '#666666'} className="bi bi-house-door-fill" viewBox="0 0 16 16">
                   <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
                 </svg>
                 <span>Home</span>
@@ -80,7 +80,7 @@ function Navbardin() {
                 to="/jobs"
                 className={`nav-link d-flex flex-column align-items-center py-0 ${location === '/jobs' ? 'border-bottom border-2 border-black' : ''}`}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={location === '/jobs' ? 'black' : '#666666'} class="bi bi-suitcase-lg-fill" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill={location === '/jobs' ? 'black' : '#666666'} className="bi bi-suitcase-lg-fill" viewBox="0 0 16 16">
                   <path d="M7 0a2 2 0 0 0-2 2H1.5A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14H2a.5.5 0 0 0 1 0h10a.5.5 0 0 0 1 0h.5a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2H11a2 2 0 0 0-2-2zM6 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1zM3 13V3h1v10zm9 0V3h1v10z" />
                 </svg>
                 <span>Lavoro</span>
