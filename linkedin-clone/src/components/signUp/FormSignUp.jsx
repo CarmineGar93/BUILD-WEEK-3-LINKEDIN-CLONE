@@ -1,12 +1,14 @@
 import { Button, Container, Card, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { SetTokenAction } from "../../redux/actions";
 
 const FormSignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
+  const dispatch = useDispatch()
   const handleLogin = async (e) => {
     e.preventDefault();
 
@@ -20,6 +22,7 @@ const FormSignUp = () => {
 
       if (user.length > 0) {
         alert("Accesso avvenuto con successo!");
+        dispatch(SetTokenAction(user[0].token))
         navigate("/home"); // Reindirizza alla home page dopo l'accesso
       } else {
         alert("Email o password errati.");
