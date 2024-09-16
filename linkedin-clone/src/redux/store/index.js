@@ -4,13 +4,15 @@ import experiencesReducer from '../reducers/experiences'
 import postsReducer from '../reducers/posts'
 import jobsReducer from '../reducers/jobs'
 import searchReducer from '../reducers/search'
+import tokenReducer from '../reducers/token'
 
 const mainReducer = combineReducers({
     user: userReducer,
     experiences: experiencesReducer,
     posts: postsReducer,
     jobs: jobsReducer,
-    search: searchReducer
+    search: searchReducer,
+    token: tokenReducer
 })
 
 const store = configureStore({

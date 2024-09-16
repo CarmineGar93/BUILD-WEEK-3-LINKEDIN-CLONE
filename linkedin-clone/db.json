@@ -33,7 +33,8 @@
     {
       "id": "f4ac",
       "email": "ca@ca",
-      "password": "Ricotta"
+      "password": "Ricotta",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y"
     },
     {
       "id": "9ee3",
@@ -44,6 +45,12 @@
       "id": "2ecd",
       "email": "pippo@pippo.com",
       "password": "pippo"
+    },
+    {
+      "id": "391d",
+      "email": "fra@fra",
+      "password": "Ricotta2",
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmU4M2YxYTA1YjlmYzAwMTVhMWQ2MTEiLCJpYXQiOjE3MjY0OTY1MzgsImV4cCI6MTcyNzcwNjEzOH0.JReZEqc_OFGIENnx5xB2oPkoqt-fpvOQCzf1J3JVUHE"
     }
   ]
 }

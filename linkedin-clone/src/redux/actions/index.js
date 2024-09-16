@@ -6,6 +6,7 @@ export const SET_SEARCH = 'SET_SEARCH'
 export const RETRIEVE_SEARCH = 'RETRIEVE SEARCH'
 export const SET_SELECTED = 'SET_SELECTED'
 export const RETRIEVE_COMMENTS = 'RETRIEVE_COMMENTS'
+export const SET_TOKEN = 'SET_TOKEN'
 
 
 export const RetrieveUserAction = () => {
@@ -147,5 +148,12 @@ export const RetrieveCommentsAction = () => {
         } catch (err) {
             console.log(err)
         }
+    }
+}
+
+export const SetTokenAction = (token) => {
+    return {
+        type: SET_TOKEN,
+        payload: token
     }
 }

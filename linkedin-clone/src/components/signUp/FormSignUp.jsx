@@ -14,11 +14,11 @@ const FormSignUp = () => {
       const response = await fetch("http://localhost:5000/users");
       const users = await response.json();
 
-      const user = users.find(
+      const user = users.filter(
         (user) => user.email === email && user.password === password
       );
 
-      if (user) {
+      if (user.length > 0) {
         alert("Accesso avvenuto con successo!");
         navigate("/home"); // Reindirizza alla home page dopo l'accesso
       } else {
@@ -74,15 +74,15 @@ const FormSignUp = () => {
           </div>
           <Card.Text>
             Cliccando su “Continua”, accetti il{" "}
-            <a className="hover-underline text-primary">
+            <a className="hover-underline text-primary" href="#a">
               Contratto di licenza,
             </a>{" "}
             <br />
-            <a className="hover-underline text-primary">
+            <a className="hover-underline text-primary" href="#a">
               l’Informativa sulla privacy
             </a>
             e
-            <a className="hover-underline text-primary">
+            <a className="hover-underline text-primary" href="#a">
               l’Informativa sui cookie
             </a>
             di LinkedIn.
@@ -95,7 +95,7 @@ const FormSignUp = () => {
             <img
               className="me-2 mb-1"
               src=" https://img.icons8.com/?size=100&id=17949&format=png&color=000000"
-              width={25}
+              width={25} alt=""
             ></img>
             Continue with Google
           </Button>
@@ -105,7 +105,7 @@ const FormSignUp = () => {
             type="submit"
             className="btn-lg w-100 rounded-pill border-3 border  bg-white  mb-2  "
           >
-            <img className="me-2 mb-1" src="https://cdn.discordapp.com/attachments/1257281696189907015/1283736614329253952/image.png?ex=66e41463&is=66e2c2e3&hm=b33139f2a1f5d627864fcafc65f0012c65876462a62e960ee7a907fee5f8a857&" width={25}></img>
+            <img className="me-2 mb-1" src="https://cdn.discordapp.com/attachments/1257281696189907015/1283736614329253952/image.png?ex=66e41463&is=66e2c2e3&hm=b33139f2a1f5d627864fcafc65f0012c65876462a62e960ee7a907fee5f8a857&" width={25} alt=""></img>
             Accedi con Microsoft
           </Button>
           <Button
@@ -116,7 +116,7 @@ const FormSignUp = () => {
             <img
               className="me-2 mb-1"
               src=" https://img.icons8.com/?size=100&id=30840&format=png&color=000000"
-              width={25}
+              width={25} alt=""
             ></img>
             Accedi con Apple
           </Button>
@@ -124,7 +124,7 @@ const FormSignUp = () => {
       </Card>
       <h4 >
         Non hai un account LinkedIn?
-        <Link to='/'className="text-primary hover-underline"> Iscriviti ora </Link>
+        <Link to='/' className="text-primary hover-underline"> Iscriviti ora </Link>
       </h4>
     </Container>
   );
