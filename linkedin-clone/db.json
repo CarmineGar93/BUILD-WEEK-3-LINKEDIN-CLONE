@@ -1,0 +1,49 @@
+{
+  "users": [
+    {
+      "id": "ddb0",
+      "email": "nico97.mecca@gmail.com",
+      "password": "peppino"
+    },
+    {
+      "id": "0212",
+      "email": "nico97.mecca@gmail.com",
+      "password": "PEPPINO"
+    },
+    {
+      "id": "ad42",
+      "email": "nico97.mecca@gmail.com",
+      "password": "PEPPINO"
+    },
+    {
+      "id": "675b",
+      "email": "nico97.mecca@gmail.com",
+      "password": "PEPPINO"
+    },
+    {
+      "id": "a585",
+      "email": "gianluca2003@gmail.com",
+      "password": "backend"
+    },
+    {
+      "id": "8a3a",
+      "email": "carmine.ricotta@gmail.com",
+      "password": "Milano"
+    },
+    {
+      "id": "f4ac",
+      "email": "ca@ca",
+      "password": "Ricotta"
+    },
+    {
+      "id": "9ee3",
+      "email": "ca@ca",
+      "password": "Ricotta2"
+    },
+    {
+      "id": "2ecd",
+      "email": "pippo@pippo.com",
+      "password": "pippo"
+    }
+  ]
+}
