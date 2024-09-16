@@ -92,8 +92,8 @@ function SingleComment({ singlecomment, id }) {
 
                     </Col>
                     <Col xs={2} className="d-flex align-items-start justify-content-end">
-                        <i class="bi bi-pencil fs-5 me-2 pointer" onClick={() => setModify(true)}></i>
-                        <i class="bi bi-x-lg fs-5 me-2 pointer" onClick={() => handleDelete()}></i>
+                        <i className="bi bi-pencil fs-5 me-2 pointer" onClick={() => setModify(true)}></i>
+                        <i className="bi bi-x-lg fs-5 me-2 pointer" onClick={() => handleDelete()}></i>
                     </Col>
                 </Row>
 

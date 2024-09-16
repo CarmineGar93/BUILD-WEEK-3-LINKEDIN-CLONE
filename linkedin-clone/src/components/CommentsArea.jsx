@@ -98,7 +98,9 @@ function CommentsArea({ id }) {
                         {
                             comments.filter(c => c.elementId === id).map(com => {
                                 return (
-                                    <SingleComment singlecomment={com} id={id} />
+                                    <div key={com._id}>
+                                        <SingleComment singlecomment={com} id={id} />
+                                    </div>
                                 )
                             })
                         }
