@@ -11,11 +11,12 @@ function ModalEsperienze(props) {
         startDate: '',
         endDate: '',
     })
+    const user = useSelector((state) => state.user.user_logged);
     const token = useSelector(state => state.token.token)
     const retrieveModify = async () => {
         if (props.mod) {
             try {
-                const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/66deae8e4d0def0015cef0fc/experiences/${props.elementId}`, {
+                const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${props.elementId}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                         'Content-Type': 'application/json'
@@ -57,7 +58,7 @@ function ModalEsperienze(props) {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await fetch('https://striveschool-api.herokuapp.com/api/profile/66deae8e4d0def0015cef0fc/experiences', {
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences`, {
                 method: 'POST',
                 body: JSON.stringify(exp),
                 headers: {
@@ -70,7 +71,7 @@ function ModalEsperienze(props) {
                 console.log(data)
                 let formData = new FormData()
                 formData.append('experience', img)
-                const response2 = await fetch(`https://striveschool-api.herokuapp.com/api/profile/66deae8e4d0def0015cef0fc/experiences/${data._id}/picture`, {
+                const response2 = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${data._id}/picture`, {
                     method: 'POST',
                     body: formData,
                     headers: {
@@ -100,7 +101,7 @@ function ModalEsperienze(props) {
         const confirm = window.confirm('Sei sicuro?')
         if (confirm) {
             try {
-                const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/66deae8e4d0def0015cef0fc/experiences/${props.elementId}`, {
+                const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${props.elementId}`, {
                     method: 'DELETE',
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -120,7 +121,7 @@ function ModalEsperienze(props) {
     const handleModify = async (e) => {
         e.preventDefault()
         try {
-            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/66deae8e4d0def0015cef0fc/experiences/${props.elementId}`, {
+            const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${props.elementId}`, {
                 method: 'PUT',
                 body: JSON.stringify(exp),
                 headers: {
@@ -132,7 +133,7 @@ function ModalEsperienze(props) {
                 if (img) {
                     let formData = new FormData()
                     formData.append('experience', img)
-                    const response2 = await fetch(`https://striveschool-api.herokuapp.com/api/profile/66deae8e4d0def0015cef0fc/experiences/${props.elementId}/picture`, {
+                    const response2 = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${props.elementId}/picture`, {
                         method: 'POST',
                         body: formData,
                         headers: {

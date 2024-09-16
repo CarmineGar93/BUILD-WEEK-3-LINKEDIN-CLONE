@@ -10,6 +10,7 @@ function CreatePostModal(props) {
     const [preview, setPreview] = useState(null)
     const [img, setImg] = useState(null)
     const user = useSelector(state => state.user.user_logged)
+    const token = useSelector(state => state.token.token)
     const [post, setPost] = useState({
         text: ''
     })
@@ -28,7 +29,7 @@ function CreatePostModal(props) {
             try {
                 const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${props.id}`, {
                     headers: {
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+                        Authorization: `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 })
@@ -55,7 +56,7 @@ function CreatePostModal(props) {
                 body: JSON.stringify(post),
                 method: 'POST',
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+                    Authorization: `Bearer ${token}`,
                     "Content-type": "application/json",
                 }
             })
@@ -68,19 +69,19 @@ function CreatePostModal(props) {
                         method: 'POST',
                         body: formData,
                         headers: {
-                            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+                            Authorization: `Bearer ${token}`,
                         },
                     })
                     if (response2.ok) {
                         alert('Post pubblicato con successo')
-                        dispatch(RetrievePostAction())
+                        dispatch(RetrievePostAction(token))
                         props.close()
                     } else {
                         throw new Error('Errore')
                     }
                 } else {
                     alert('Post pubblicato con successo')
-                    dispatch(RetrievePostAction())
+                    dispatch(RetrievePostAction(token))
                     props.close()
                 }
                 setImg(null)
@@ -103,13 +104,13 @@ function CreatePostModal(props) {
                 const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${props.id}`, {
                     method: 'DELETE',
                     headers: {
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+                        Authorization: `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 })
                 if (response.ok) {
                     alert('Post cancellato')
-                    dispatch(RetrievePostAction())
+                    dispatch(RetrievePostAction(token))
                     props.close()
                 } else {
                     throw new Error('Non si può')
@@ -126,7 +127,7 @@ function CreatePostModal(props) {
                 method: 'PUT',
                 body: JSON.stringify(post),
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+                    Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
             })
@@ -134,23 +135,23 @@ function CreatePostModal(props) {
                 if (img) {
                     let formData = new FormData()
                     formData.append('post', img)
-                    const response2 = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${props._id}`, {
+                    const response2 = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${props.id}`, {
                         method: 'POST',
                         body: formData,
                         headers: {
-                            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+                            Authorization: `Bearer ${token}`,
                         },
                     })
                     if (response2.ok) {
                         alert('Post modificato con successo')
-                        dispatch(RetrievePostAction())
+                        dispatch(RetrievePostAction(token))
                         props.close()
                     } else {
                         throw new Error('Errore')
                     }
                 } else {
                     alert('Post modificato con successo')
-                    dispatch(RetrievePostAction())
+                    dispatch(RetrievePostAction(token))
                     setImg(null)
                     setPreview(null)
                     setPost({

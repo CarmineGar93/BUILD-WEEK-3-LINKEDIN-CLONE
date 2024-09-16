@@ -5,11 +5,13 @@ import { useDispatch } from "react-redux"
 import { RetrieveCommentsAction, RetrievePostAction } from "../redux/actions"
 import RightSideBar from "./RightSideBar"
 import HomeSidebar from "./HomeSidebar"
+import { useSelector } from "react-redux"
 
 function HomeComponent() {
     const dispatch = useDispatch()
+    const token = useSelector(state => state.token.token)
     useEffect(() => {
-        dispatch(RetrievePostAction())
+        dispatch(RetrievePostAction(token))
         dispatch(RetrieveCommentsAction())
     })
     return (

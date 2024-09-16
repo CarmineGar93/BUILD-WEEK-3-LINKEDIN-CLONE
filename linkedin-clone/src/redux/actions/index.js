@@ -57,12 +57,12 @@ export const RetrieveExperiencesAction = (token) => {
     }
 }
 
-export const RetrievePostAction = () => {
+export const RetrievePostAction = (token) => {
     return async (dispatch) => {
         try {
             const response = await fetch('https://striveschool-api.herokuapp.com/api/posts/', {
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y'
+                    Authorization: `Bearer ${token}`
                 }
             })
             if (response.ok) {
