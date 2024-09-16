@@ -2,11 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Card, Button, Row } from 'react-bootstrap';
 import { IoIosLock } from 'react-icons/io';
+import { useSelector } from "react-redux"
 
 const ProfileCard = ({ userId, image }) => {
   const [user, setUser] = useState(null); // Stato locale per memorizzare i dati dell'utente
   const [loading, setLoading] = useState(true); // Stato per la gestione del caricamento
   const [error, setError] = useState(null); // Stato per gestire eventuali errori
+  const token = useSelector(state => state.token.token)
 
   // Funzione per recuperare i profili utente
   const fetchProfile = async (userId) => {
@@ -16,7 +18,7 @@ const ProfileCard = ({ userId, image }) => {
         {
           headers: {
             Authorization:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+              `Bearer ${token}`,
           },
         }
       );
@@ -39,6 +41,7 @@ const ProfileCard = ({ userId, image }) => {
     if (userId) {
       fetchProfile(userId);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId]);
 
   // Rende un messaggio di caricamento o di errore se necessario
@@ -50,7 +53,7 @@ const ProfileCard = ({ userId, image }) => {
     <Row className="mb-3">
       <div className="d-flex">
         <Col md={2}>
-         
+
           <img src={image} alt="Profile" className="circular-image" />
         </Col>
         <div className="d-flex flex-column ms-2 flex-grow-2">
@@ -62,9 +65,9 @@ const ProfileCard = ({ userId, image }) => {
             <Card.Subtitle className="mb-2 text-black fw-normal">
               {user.title}
             </Card.Subtitle>
-            
+
             <Button variant="outline-primary" className="d-flex altezza btn-md mb-2 rounded-pill">
-              
+
               <IoIosLock className="mt-1 me-1" />
               Messaggio
             </Button>
