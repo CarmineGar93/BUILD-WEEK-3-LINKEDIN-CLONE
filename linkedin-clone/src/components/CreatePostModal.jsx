@@ -185,7 +185,7 @@ function CreatePostModal(props) {
                             <img src={user.image} alt="" width={60} height={60} className='rounded-circle me-2' />
                         </div>
                         <div>
-                            <h5 className='mb-0'>{user.name} {user.surname} <i class="bi bi-caret-down-fill text-secondary fs-6"></i></h5>
+                            <h5 className='mb-0'>{user.name} {user.surname} <i className="bi bi-caret-down-fill text-secondary fs-6"></i></h5>
                             <p className='mb-0'>Pubblica: Chiuque</p>
                         </div>
                     </Col>

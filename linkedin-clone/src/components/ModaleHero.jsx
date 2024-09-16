@@ -36,16 +36,12 @@ const ModaleHero = ({ show, handleClose }) => {
       })
         .then((response) => {
           if (response.ok) {
-            dispatch(RetrieveUserAction());
+            dispatch(RetrieveUserAction(token));
+            alert("Salvataggio informazioni utente.");
             return response.json();
           } else {
             throw new Error("Network response was not ok");
           }
-        })
-        .then((data) => {
-          alert("Salvataggio informazioni utente.");
-          dispatch(RetrieveUserAction) // Carica l'immagine se è stata selezionata
-
         })
         .catch((err) => {
           console.error("Fetch error:", err);

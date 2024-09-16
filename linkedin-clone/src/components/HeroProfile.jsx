@@ -47,7 +47,7 @@ function HeroProfile() {
         const data = await response.json();
         console.log('Immagine caricata con successo:', data);
         alert('Immagine caricata con successo!');
-        dispatch(RetrieveUserAction());
+        dispatch(RetrieveUserAction(token));
 
         // Aggiorna l'immagine del profilo
         // Potresti voler ricaricare i dati dell'utente qui
