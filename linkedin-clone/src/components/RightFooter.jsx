@@ -128,15 +128,16 @@ const RightFooter = () => {
       <Modal
         show={showModal}
         onHide={handleClose}
-        aria-labelledby="custom-modal-title"
-        fullscreen
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        dialogClassName="bottom-modal custom-modal"
       >
-<ModalHeader closeButton>
-  </ModalHeader>
+        <ModalHeader closeButton>
+        </ModalHeader>
 
         <Modal.Body>
           <img width="100" src="./Linkedin-Logo.png" alt="LinkedIn Logo" />
-          <div className="d-flex justify-content-center align-items-center vh-100 position-relative">
+          <div>
             <FooterComponent />
           </div>
         </Modal.Body>

@@ -21,7 +21,7 @@ function JobsSuggested() {
                             <div id="jobs">
                                 {
                                     jobs.filter(j => {
-                                        return j.title.includes(user.title)
+                                        return j.title.toLowerCase().includes(user.title.toLowerCase()) || j.description.toLowerCase().includes(user.title.toLowerCase())
                                     }).slice(0, expanded ? jobs.length : 3).map(job => {
                                         return (
                                             <Row key={job._id} className="my-3 g-2">
