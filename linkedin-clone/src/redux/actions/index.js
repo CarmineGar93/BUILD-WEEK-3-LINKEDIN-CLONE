@@ -9,12 +9,12 @@ export const RETRIEVE_COMMENTS = 'RETRIEVE_COMMENTS'
 export const SET_TOKEN = 'SET_TOKEN'
 
 
-export const RetrieveUserAction = () => {
+export const RetrieveUserAction = (token) => {
     return async (dispatch) => {
         try {
             const response = await fetch('https://striveschool-api.herokuapp.com/api/profile/me', {
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y'
+                    Authorization: `Bearer ${token}`
                 }
             })
             if (response.ok) {
@@ -33,12 +33,12 @@ export const RetrieveUserAction = () => {
     }
 }
 
-export const RetrieveExperiencesAction = () => {
+export const RetrieveExperiencesAction = (token) => {
     return async (dispatch) => {
         try {
             const response = await fetch('https://striveschool-api.herokuapp.com/api/profile/66deae8e4d0def0015cef0fc/experiences', {
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y'
+                    Authorization: `Bearer ${token}`
                 }
             })
             if (response.ok) {

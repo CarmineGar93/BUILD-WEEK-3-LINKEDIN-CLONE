@@ -7,6 +7,8 @@ import { RetrieveUserAction } from '../redux/actions/index';
 const ModaleHero = ({ show, handleClose }) => {
   const user = useSelector((state) => state.user.user_logged);
   const dispatch = useDispatch();
+  const token = useSelector(state => state.token.token)
+
 
   const ModifyDataUser = {
     name: user.name,
@@ -28,7 +30,7 @@ const ModaleHero = ({ show, handleClose }) => {
         body: JSON.stringify(modify),
         headers: {
           "Content-type": "application/json",
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y'
+          Authorization: `Bearer ${token}`
 
         },
       })
@@ -42,8 +44,8 @@ const ModaleHero = ({ show, handleClose }) => {
         })
         .then((data) => {
           alert("Salvataggio informazioni utente.");
-            dispatch(RetrieveUserAction) // Carica l'immagine se è stata selezionata
-          
+          dispatch(RetrieveUserAction) // Carica l'immagine se è stata selezionata
+
         })
         .catch((err) => {
           console.error("Fetch error:", err);

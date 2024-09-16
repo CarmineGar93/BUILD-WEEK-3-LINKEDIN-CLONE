@@ -20,11 +20,14 @@ import RegisterComponent from './components/signUp/RegisterComponent';
 function App() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user.user_logged);
+  const token = useSelector(state => state.token.token);
 
   useEffect(() => {
-    dispatch(RetrieveUserAction());
+    if (token) {
+      dispatch(RetrieveUserAction(token));
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [token]);
 
   return (
     <BrowserRouter>

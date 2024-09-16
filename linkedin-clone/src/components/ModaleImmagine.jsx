@@ -1,5 +1,4 @@
 import { Modal, Button, Form } from "react-bootstrap";
-import { FaTrash, FaImage } from "react-icons/fa"
 const ModaleImmagine = ({ show, handleClose, selectedFile, handleFileChange, uploadImage, userId }) => {
   const handleSubmit = () => {
     if (selectedFile) {
@@ -11,7 +10,7 @@ const ModaleImmagine = ({ show, handleClose, selectedFile, handleFileChange, upl
   };
 
   return (
-   <Modal show={show} onHide={handleClose} className="custom-modal" >
+    <Modal show={show} onHide={handleClose} className="custom-modal" >
       <Modal.Header closeButton>
         <Modal.Title>Modifica Immagine Profilo</Modal.Title>
       </Modal.Header>

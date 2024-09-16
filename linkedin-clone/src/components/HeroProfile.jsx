@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 function HeroProfile() {
   const [showImageModal, setShowImageModal] = useState(false);
   const dispatch = useDispatch();
+  const token = useSelector(state => state.token.token)
 
   const [showModal, setShowModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
@@ -36,7 +37,7 @@ function HeroProfile() {
       const response = await fetch(url, {
         method: 'POST',
         headers: {
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y'
+          Authorization: `Bearer ${token}`
 
         },
         body: formData,

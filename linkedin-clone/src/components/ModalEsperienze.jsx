@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Modal, Button, Form } from 'react-bootstrap'
+import { useSelector } from "react-redux"
 
 function ModalEsperienze(props) {
     const [exp, setExp] = useState({
@@ -10,12 +11,13 @@ function ModalEsperienze(props) {
         startDate: '',
         endDate: '',
     })
+    const token = useSelector(state => state.token.token)
     const retrieveModify = async () => {
         if (props.mod) {
             try {
                 const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/66deae8e4d0def0015cef0fc/experiences/${props.elementId}`, {
                     headers: {
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+                        Authorization: `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 })
@@ -59,7 +61,7 @@ function ModalEsperienze(props) {
                 method: 'POST',
                 body: JSON.stringify(exp),
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+                    Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
             })
@@ -72,7 +74,7 @@ function ModalEsperienze(props) {
                     method: 'POST',
                     body: formData,
                     headers: {
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+                        Authorization: `Bearer ${token}`,
                     },
                 })
                 if (response2.ok) {
@@ -101,11 +103,11 @@ function ModalEsperienze(props) {
                 const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/66deae8e4d0def0015cef0fc/experiences/${props.elementId}`, {
                     method: 'DELETE',
                     headers: {
-                        Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+                        Authorization: `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 })
-                if(response.ok) {
+                if (response.ok) {
                     alert('Esperienza cancellata')
                 } else {
                     throw new Error('Non si può')
@@ -122,7 +124,7 @@ function ModalEsperienze(props) {
                 method: 'PUT',
                 body: JSON.stringify(exp),
                 headers: {
-                    Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+                    Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
             })
@@ -134,7 +136,7 @@ function ModalEsperienze(props) {
                         method: 'POST',
                         body: formData,
                         headers: {
-                            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NmRlYWU4ZTRkMGRlZjAwMTVjZWYwZmMiLCJpYXQiOjE3MjU4Njk3MTAsImV4cCI6MTcyNzA3OTMxMH0.i5d01PoeGodN6ArYB1_1dWhujI8O_qYvSQ3eu3VwC0Y',
+                            Authorization: `Bearer ${token}`,
                         },
                     })
                     if (response2.ok) {

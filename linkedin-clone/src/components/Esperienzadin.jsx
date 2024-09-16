@@ -12,11 +12,12 @@ function Esperienzadin() {
     const [show, setShow] = useState(false)
     const [isModifing, setisModifing] = useState(false)
     const [elementToModify, setElementToModify] = useState('')
+    const token = useSelector(state => state.token.token)
     const dispatch = useDispatch()
     useEffect(() => {
         if (!show) {
             setisModifing(false)
-            dispatch(RetrieveExperiencesAction())
+            dispatch(RetrieveExperiencesAction(token))
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -50,7 +51,7 @@ function Esperienzadin() {
 
     return (
         <Container className="px-0 mt-3">
-            <ModalEsperienze show={show} handleClose={handleClose} mod={isModifing} elementId={elementToModify}/>
+            <ModalEsperienze show={show} handleClose={handleClose} mod={isModifing} elementId={elementToModify} />
             <Row>
                 <Col xs={12}>
                     <Card className="p-4">
@@ -77,7 +78,7 @@ function Esperienzadin() {
                                                     {`${formatoDataBreve(exp.startDate)} - ${formatoDataBreve(exp.endDate)} • ${differenzaDate(exp.startDate, exp.endDate)}`}</p>
                                             </Col>
                                             <Col xs={1} className="text-start">
-                                                <button className="btn-experience bg-white border-0 rounded-circle p-1 p-lg-2" onClick={()=>{
+                                                <button className="btn-experience bg-white border-0 rounded-circle p-1 p-lg-2" onClick={() => {
                                                     setisModifing(true)
                                                     setElementToModify(exp._id)
                                                     setShow(true)
