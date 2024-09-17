@@ -2,6 +2,7 @@ import { useSelector } from "react-redux"
 import { Card, Row, Col, } from "react-bootstrap"
 import { GoPencil } from 'react-icons/go';
 import CommentsArea from "./CommentsArea";
+import { Link } from "react-router-dom";
 
 
 function PostsComponent({ open, mod }) {
@@ -38,7 +39,7 @@ function PostsComponent({ open, mod }) {
                                         <img src={post.user.image} alt="" width={50} height={50} className="rounded-circle" />
                                     </Col>
                                     <Col xs={8} className="">
-                                        <h6 className="mb-0">{post.user.name} {post.user.surname}</h6>
+                                        <Link to={`/profile/${post.user._id}`} className="mb-0 fs-6 text-decoration-none text-black fw-semibold">{post.user.name} {post.user.surname}</Link>
                                         <p className="mb-0 text-muted">{/* {exp.company} • {exp.area} */}{post.user.title}</p>
                                         <p className="mb-0 text-muted">{calculateTimePassed(post.createdAt)} • <i className="bi bi-globe-americas"></i></p>
                                     </Col>

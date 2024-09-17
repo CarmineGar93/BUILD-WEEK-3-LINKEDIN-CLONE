@@ -74,7 +74,7 @@ function HeroProfile() {
             <div className="position-relative mb-4 mb-xl-5">
               <Card.Img variant="top" src="https://static.licdn.com/aero-v1/sc/h/55k1z8997gh8dwtihm11aajyq" />
               <img
-                src={profile.image}
+                src={profile._id === user._id ? user.image : profile.image}
                 alt=""
                 className="position-absolute z-1 bottom-0 start-0 rounded-circle ms-3 img-profile"
                 onClick={handleShowImageModal}
@@ -84,11 +84,11 @@ function HeroProfile() {
             <Card.Body className="d-flex justify-content-between align-items-start">
               <div>
                 <Card.Title className="mb-0">
-                  {profile.name} {profile.surname}
+                  {profile._id === user._id ? user.name : profile.name} {profile._id === user._id ? user.surname : profile.surname}
                 </Card.Title>
-                <Card.Text className="mb-1">{profile.title}</Card.Text>
+                <Card.Text className="mb-1">{profile._id === user._id ? user.title : profile.title}</Card.Text>
                 <Card.Text className="text-muted">
-                  {profile.area} •{" "}
+                  {profile._id === user._id ? user.area : profile.area} •{" "}
                   <a href="#a" title="" className="text-decoration-none">
                     Informazioni di contatto
                   </a>

@@ -18,7 +18,7 @@ const InfoComponent = () => {
               }
 
             </div>
-            <Card.Text> {profile.bio}</Card.Text>
+            <Card.Text> {user._id === profile._id ? user.bio : profile.bio}</Card.Text>
           </Card.Body>
         </Card>
       </Col>

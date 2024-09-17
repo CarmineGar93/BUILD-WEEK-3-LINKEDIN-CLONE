@@ -23,7 +23,7 @@ function Esperienzadin() {
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [show])
+    }, [show, profile])
     const expList = useSelector(state => state.experiences.exp_list)
 
     const handleClose = () => {
