@@ -12,13 +12,18 @@ function HeroProfile() {
   const [showImageModal, setShowImageModal] = useState(false);
   const dispatch = useDispatch();
   const token = useSelector(state => state.token.token)
-
+  const profile = useSelector(state => state.user.profile)
   const [showModal, setShowModal] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const user = useSelector((state) => state.user.user_logged);
 
   const handleCloseImageModal = () => setShowImageModal(false);
-  const handleShowImageModal = () => setShowImageModal(true);
+  const handleShowImageModal = () => {
+    if (profile._id === user._id) {
+      setShowImageModal(true)
+    }
+
+  };
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -67,9 +72,9 @@ function HeroProfile() {
         <Col xs={12}>
           <Card>
             <div className="position-relative mb-4 mb-xl-5">
-              <Card.Img variant="top" src="./55k1z8997gh8dwtihm11aajyq.svg" />
+              <Card.Img variant="top" src="https://static.licdn.com/aero-v1/sc/h/55k1z8997gh8dwtihm11aajyq" />
               <img
-                src={user.image}
+                src={profile.image}
                 alt=""
                 className="position-absolute z-1 bottom-0 start-0 rounded-circle ms-3 img-profile"
                 onClick={handleShowImageModal}
@@ -79,11 +84,11 @@ function HeroProfile() {
             <Card.Body className="d-flex justify-content-between align-items-start">
               <div>
                 <Card.Title className="mb-0">
-                  {user.name} {user.surname}
+                  {profile.name} {profile.surname}
                 </Card.Title>
-                <Card.Text className="mb-1">{user.title}</Card.Text>
+                <Card.Text className="mb-1">{profile.title}</Card.Text>
                 <Card.Text className="text-muted">
-                  {user.area} •{" "}
+                  {profile.area} •{" "}
                   <a href="#a" title="" className="text-decoration-none">
                     Informazioni di contatto
                   </a>
@@ -140,7 +145,10 @@ function HeroProfile() {
                   </Col>
                 </Row>
               </div>
-              <button className="btn-experience bg-white border-0 rounded-circle p-1 p-lg-2" onClick={handleShowModal}><GoPencil className="fs-4" /></button>
+              {
+                profile._id === user._id && <button className="btn-experience bg-white border-0 rounded-circle p-1 p-lg-2" onClick={handleShowModal}><GoPencil className="fs-4" /></button>
+              }
+
             </Card.Body>
           </Card>
         </Col>

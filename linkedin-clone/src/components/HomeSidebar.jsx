@@ -1,4 +1,4 @@
-import React, { useState } from "react"; 
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/esm/Col";
@@ -9,11 +9,11 @@ import { FaBookmark } from "react-icons/fa";
 import { FaPlus } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Collapse } from 'react-bootstrap'; 
+import { Collapse } from 'react-bootstrap';
 
 const HomeSidebar = () => {
   const userProfile = useSelector((state) => state.user.user_logged);
-  
+
   const [expanded, setExpanded] = useState(false);
 
   return (
@@ -35,7 +35,7 @@ const HomeSidebar = () => {
             <Card.Body>
               <Card.Title className="mt-5 text-center ">
                 <Link
-                  to={"/profile"}
+                  to={`/profile/${userProfile._id}`}
                   className="under text-black hover-underline"
                 >
                   {userProfile.name} {userProfile.surname}
@@ -46,13 +46,13 @@ const HomeSidebar = () => {
               </Card.Text>
               <div className="d-md-none">
                 <Button
-                  onClick={() => setExpanded(!expanded)} 
+                  onClick={() => setExpanded(!expanded)}
                   aria-controls="dropdown-content"
                   aria-expanded={expanded}
                   className="w-100 text-center button-drop"
 
                 >
-                  {expanded ? "Mostra meno" : "Scopri di più"} 
+                  {expanded ? "Mostra meno" : "Scopri di più"}
                 </Button>
                 <Collapse in={expanded}>
                   <div id="dropdown-content">

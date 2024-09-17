@@ -38,7 +38,7 @@ function NavDropdowndin() {
           <Col xs={12}>
             <button
               className="w-100 py-0 btn-profile rounded-4"
-              onClick={() => navigate("/profile")}
+              onClick={() => navigate(`/profile/${user._id}`)}
             >
               Visualizza profilo
             </button>

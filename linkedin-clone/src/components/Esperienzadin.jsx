@@ -14,11 +14,12 @@ function Esperienzadin() {
     const [elementToModify, setElementToModify] = useState('')
     const token = useSelector(state => state.token.token)
     const user = useSelector((state) => state.user.user_logged);
+    const profile = useSelector((state) => state.user.profile);
     const dispatch = useDispatch()
     useEffect(() => {
         if (!show) {
             setisModifing(false)
-            dispatch(RetrieveExperiencesAction(token, user._id))
+            dispatch(RetrieveExperiencesAction(token, profile._id))
         }
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,7 +62,12 @@ function Esperienzadin() {
                                 <h4>Esperienze</h4>
                             </Col>
                             <Col xs={'auto'} className="ms-auto">
-                                <button className="btn-experience bg-white border-0 rounded-circle p-1" onClick={() => setShow(true)}><img src={plus} alt="" /></button>
+                                {
+                                    user._id === profile._id && (
+                                        <button className="btn-experience bg-white border-0 rounded-circle p-1" onClick={() => setShow(true)}><img src={plus} alt="" /></button>
+                                    )
+                                }
+
                             </Col>
                         </Row>
                         <div id="experiences">
@@ -79,12 +85,15 @@ function Esperienzadin() {
                                                     {`${formatoDataBreve(exp.startDate)} - ${formatoDataBreve(exp.endDate)} • ${differenzaDate(exp.startDate, exp.endDate)}`}</p>
                                             </Col>
                                             <Col xs={1} className="text-start">
-                                                <button className="btn-experience bg-white border-0 rounded-circle p-1 p-lg-2" onClick={() => {
-                                                    setisModifing(true)
-                                                    setElementToModify(exp._id)
-                                                    setShow(true)
-                                                }}><GoPencil className="fs-4" /></button>
-
+                                                {
+                                                    user._id === profile._id && (
+                                                        <button className="btn-experience bg-white border-0 rounded-circle p-1 p-lg-2" onClick={() => {
+                                                            setisModifing(true)
+                                                            setElementToModify(exp._id)
+                                                            setShow(true)
+                                                        }}><GoPencil className="fs-4" /></button>
+                                                    )
+                                                }
                                             </Col>
                                         </Row>
                                     )
