@@ -32,7 +32,7 @@ function CommentsArea({ id }) {
                 setCommentInput({
                     comment: '',
                     elementId: id,
-                    rete: '5'
+                    rate: '5'
 
                 })
             } else {

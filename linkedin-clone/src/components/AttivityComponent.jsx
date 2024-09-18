@@ -62,7 +62,7 @@ const ActivityCard = () => {
                 ) : (
                   <>
                     {
-                      posts.filter(p => p.user._id === profile._id).map(post => {
+                      posts.filter(p => p.user._id === profile._id).reverse().map(post => {
                         return (
                           <Card className="mt-3" key={post._id}>
                             <Card.Body>
