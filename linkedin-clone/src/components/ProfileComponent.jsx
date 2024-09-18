@@ -30,7 +30,7 @@ function ProfileComponent() {
       dispatch(RetrieveProfileAction(token, userId))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [userId])
 
   return (
     <Container>
